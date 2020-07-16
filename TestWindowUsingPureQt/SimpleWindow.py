@@ -14,7 +14,7 @@ def displayAlertMsg(mainWindow) :
 app = QApplication([])
 window = QWidget() 	# should be a QMainWindow() !
 
-window.setGeometry(0, 0, 800, 480)	# adapted to Raspberry official display touchscreeb size
+window.setGeometry(0, 0, 800, 480)	# adapted to Raspberry official display touchscreen size
 window.setWindowTitle('Première fenêtre PyQt5')
 
 horizontalLayout = QHBoxLayout()
