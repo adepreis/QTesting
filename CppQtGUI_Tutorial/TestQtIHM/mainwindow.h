@@ -6,6 +6,8 @@
 #include <QHBoxLayout>      //added
 #include <QVBoxLayout>      //added
 
+#include "customwidget.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -19,7 +21,7 @@ private slots:
     void onClickCustomBtn();
 
 private:
-    CustomButton* m_customBtnBonjour;   // added ("m_" for Main attr)
+    QPushButton* m_customBtnBonjour;   // added ("m_" for Main attr)
 
     QWidget* m_mainWidget;
 

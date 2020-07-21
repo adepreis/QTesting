@@ -8,8 +8,11 @@ class CustomButton : public QPushButton
 {
     Q_OBJECT    // Ajouté
 
+private slots :
+    void btnAction();
+
 public:
-    CustomButton(QWidget* parent = 0);  // Modifié
+    CustomButton(QString text, QWidget* parent = 0);  // Modifié
     ~CustomButton();       // added
 };
 

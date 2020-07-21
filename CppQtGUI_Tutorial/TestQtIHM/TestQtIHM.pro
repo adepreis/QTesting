@@ -26,8 +26,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    custombutton.cpp
+    custombutton.cpp \
+    customwidget.cpp
 
 HEADERS += \
         mainwindow.h \
-    custombutton.h
+    custombutton.h \
+    customwidget.h

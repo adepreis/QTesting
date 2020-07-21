@@ -15,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_hBoxLayout->addLayout(m_vBoxLayout);  // ajout du VBox dans le HBox
 
-    m_customBtnBonjour = new CustomButton(this);
+    m_customBtnBonjour = new QPushButton("Pouet pouet", this);
+    m_customBtnBonjour->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Minimum);
     /*
         Méthode pour "linker" un bouton et une fonction (DP Observer) :
         m_customBtnBonjour,     bouton que l'on souhaite "binder"
@@ -25,10 +26,16 @@ MainWindow::MainWindow(QWidget *parent)
     */
     connect(m_customBtnBonjour, SIGNAL(clicked(bool)), this, SLOT(onClickCustomBtn()));
 
+    m_hBoxLayout->addSpacing(20);
     m_hBoxLayout->addWidget(m_customBtnBonjour);    // ajout du btn dans le HBOX
+    m_hBoxLayout->addWidget(new CustomWidget());
 
-    for(int i=0; i<10; i++)
-        m_vBoxLayout->addWidget(new QPushButton("Bla", m_mainWidget));      // ajout de plsr btn dans VBOX
+    for(int i=0; i<10; i++) {
+        CustomButton* tempButton = new CustomButton("Bonjour !", m_mainWidget);
+        m_vBoxLayout->addWidget(tempButton);      // ajout de plsr btn dans VBOX
+
+        connect(tempButton, SIGNAL(clicked(bool)), tempButton, SLOT(btnAction()));
+    }
 
     setCentralWidget(m_mainWidget);     // spécifie le widget principal
 }
@@ -39,5 +46,6 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::onClickCustomBtn() {
-    qDebug() << "Clic détecté sur le btn Bonjour" << endl;;
+    qDebug() << "Clic détecté sur le bouton" << m_customBtnBonjour->text() << endl;
+
 }
