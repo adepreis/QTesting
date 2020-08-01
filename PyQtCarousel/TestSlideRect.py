@@ -2,6 +2,14 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame
 
+class InfoRect(QFrame):
+    def __init__(self, color):
+        super().__init__()    # inherit of QFrame
+        self.initUI(color)
+
+    def initUI(self, color):
+        self.setFrameShape(QFrame.Box)
+        self.setStyleSheet("background-color:" + color + ";");        # use palette instead ?
 
 
 class MainWindow(QWidget):
@@ -27,17 +35,9 @@ class MainWindow(QWidget):
         self.vBox.addWidget(labelOrder, alignment=Qt.AlignHCenter)
 
 
-        rect1 = QFrame()
-        rect1.setFrameShape(QFrame.Box)
-        rect1.setStyleSheet("background-color:red;");        # use palette instead ?
-
-        rect2 = QFrame()
-        rect2.setFrameShape(QFrame.Box)
-        rect2.setStyleSheet("background-color:green;");     # use palette instead ?
-
-        rect3 = QFrame()
-        rect3.setFrameShape(QFrame.Box)
-        rect3.setStyleSheet("background-color:blue;");      # use palette instead ?
+        rect1 = InfoRect("red")
+        rect2 = InfoRect("green")
+        rect3 = InfoRect("blue")
 
         self.listRect.append(rect1)
         self.listRect.append(rect2)
