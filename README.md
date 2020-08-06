@@ -9,6 +9,11 @@ Personal project(s) to learn/discover the Qt framework.
 | ![Illustration : application preview](./TestWindowUsingPureQt/capture.png) | ![Illustration : application preview](./TestWindowUsingQtDesigner/capture.png) | ![Illustration : application preview](./CppQtGUI_Tutorial/capture.png) | ![Illustration : carousel preview](./PyQtCarousel/capture.png) |
 | _Basic project to learn how to create a PyQt5 app using only Qt5 for Python_ | _Project to learn how to create a PyQt5 app using QtDesigner_ | _Basic project to learn how to create a Qt5 app using C++_ | _Simple carousel using Qt5 for Python_ |
 
+| [QDashboard](./QDashboard) |
+| :---------------: |
+| ![Illustration : application preview](./QDashboard/capture.png) |
+| _Instrument cluster using Qt5 for Python (just started)_ |
+
 ## Built with..
 
 Softwares and technologies :

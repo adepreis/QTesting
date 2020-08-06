@@ -73,7 +73,7 @@ class MainWindow(QWidget):
     # override paint
     def paintEvent(self, event):
         painter = QPainter(self)
-        painter.drawPixmap(self.rect(), QPixmap("backgroundBlue.png"))
+        painter.drawPixmap(self.rect(), QPixmap("background.png"))
         QWidget.paintEvent(self, event)
 
     def wheelEvent(self, scrollEvent):
