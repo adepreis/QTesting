@@ -1,4 +1,4 @@
-# from PyQt5.QtCore import *
+from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QFont, QColor
 from PyQt5.QtWidgets import QFrame, QLabel
 
@@ -25,6 +25,10 @@ class SpeedLabel(QLabel):
         self.setText(str(speed))
         self.initUI()
 
+        self.timer = QTimer(self)
+        self.timer.setInterval(1200)
+        self.timer.timeout.connect(self.deceleration)
+
     def initUI(self):
         self.setMaximumSize(700, 75)
         self.setFont(QFont('Mosk Thin 100', 30, 60))
@@ -38,12 +42,19 @@ class SpeedLabel(QLabel):
 
         if currentSpeed < self.MAX_SPEED:
             self.setText(str(currentSpeed + 1))
+            self.timer.start()   # starts deceleration phenomenon
 
     def slowDown(self):
         currentSpeed = self.getSpeedValue()
 
         if currentSpeed > self.MIN_SPEED:
             self.setText(str(currentSpeed - 1))
+        else:
+            self.timer.stop()   # stops deceleration phenomenon when MIN_SPEED is reached
 
     def getSpeedValue(self):
         return int(self.text())
+
+    def deceleration(self):
+        # simulates engine brake by decreasing speed every 1200ms
+        self.slowDown()

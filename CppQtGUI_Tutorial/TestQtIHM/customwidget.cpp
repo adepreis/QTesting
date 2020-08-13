@@ -10,25 +10,26 @@ void CustomWidget::paintEvent(QPaintEvent* event)
 {
     QPainter p(this);
 
-    p.setPen(isClicked ? Qt::blue : Qt::black);     // contour modifié si cliqué
+    // modify border color on click
+    p.setPen(isClicked ? Qt::blue : Qt::black);
 
     p.setBrush(Qt::gray);
 
     p.drawRoundedRect(0, 0, this->width(), this->height(), 10, 10);
 
-    // facultatif : texte dans le widget...
+    // optional : text in the widget...
 
-//    updateGeometry();   // bonne pratique ? recalcule l'espace occupé par le widget
+//    updateGeometry();   // good practice ? should recalculates the space occupied by the widget..
 }
 
 void CustomWidget::mousePressEvent(QMouseEvent *e)
 {
     isClicked = true;
-    repaint();  // force le widget à mettre à jour son apparence
+    repaint();  // forces widget to update its appearance
 }
 
 void CustomWidget::mouseReleaseEvent(QMouseEvent *e)
 {
     isClicked = false;
-    repaint();  // force le widget à mettre à jour son apparence
+    repaint();  // forces widget to update its appearance
 }

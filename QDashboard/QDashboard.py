@@ -77,21 +77,21 @@ class MainWindow(QWidget):
         QWidget.paintEvent(self, event)
 
     def wheelEvent(self, scrollEvent):
-        modifiers = QApplication.keyboardModifiers()
-        if modifiers == Qt.ControlModifier:
-            print("Ctrl + scroll")
-        elif modifiers == Qt.ShiftModifier:
-            print("Shift + scroll")
-        elif modifiers == Qt.AltModifier:
-            print("Alt + scroll")
+        # modifiers = QApplication.keyboardModifiers()
+        # if modifiers == Qt.ControlModifier:
+        #     print("Ctrl + scroll")
+        # elif modifiers == Qt.ShiftModifier:
+        #     print("Shift + scroll")
+        # elif modifiers == Qt.AltModifier:
+        #     print("Alt + scroll")
 
         scrollEvent.accept()
         print("Autre scroll", scrollEvent.angleDelta().x(), " ", scrollEvent.angleDelta().y())
 
         if scrollEvent.angleDelta().y() > 0:
-            self.slideFromRight()
+            self.slideFromRight()	# or fire event "Qt.Key_Right" ?
         elif scrollEvent.angleDelta().y() < 0:
-            self.slideFromLeft()
+            self.slideFromLeft()	# or fire event "Qt.Key_Left" ?
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Up:

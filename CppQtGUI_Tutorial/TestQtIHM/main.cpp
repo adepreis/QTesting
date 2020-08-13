@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    // PAUSED @ https://youtu.be/050zzD4c-5c?t=5495
+    // PAUSED @ https://youtu.be/050zzD4c-5c?t=6000
 
     return a.exec();
 }

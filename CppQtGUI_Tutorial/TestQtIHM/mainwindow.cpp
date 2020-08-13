@@ -1,43 +1,43 @@
 #include "mainwindow.h"
 #include <QDebug>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setWindowTitle("Ma super application !");
 
     m_hBoxLayout = new QHBoxLayout(this);
 
-    m_mainWidget = new QWidget(this);       // prend en parent this pour l'auto destruction
-    m_mainWidget->setLayout(m_hBoxLayout);  // le layout principal sera le HBox
+    m_mainWidget = new QWidget(this);       // takes "this" as a parent (for self-destruction)
+    m_mainWidget->setLayout(m_hBoxLayout);  // main layout will be the HBox
 
-    m_vBoxLayout = new QVBoxLayout(this);   // création du VBox
+    m_vBoxLayout = new QVBoxLayout(this);   // VBox creation
 
-    m_hBoxLayout->addLayout(m_vBoxLayout);  // ajout du VBox dans le HBox
+    m_hBoxLayout->addLayout(m_vBoxLayout);  // adds VBox in the HBox
 
     m_customBtnBonjour = new QPushButton("Pouet pouet", this);
     m_customBtnBonjour->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Minimum);
     /*
-        Méthode pour "linker" un bouton et une fonction (DP Observer) :
-        m_customBtnBonjour,     bouton que l'on souhaite "binder"
-        SIGNAL(clicked(bool)),  type de l'evenement à écouter
-        this,                   Objet auquel est associé la fonction
-        SLOT(onClickCustomBtn(bool))    la fonction en question
+        Method to "link" a button and a function (DP Observer) :
+        m_customBtnBonjour,     button that we want to "bind"
+        SIGNAL(clicked(bool)),  type of the event to listen to
+        this,                   Object associated to the following function
+        SLOT(onClickCustomBtn(bool))    the triggered function
     */
     connect(m_customBtnBonjour, SIGNAL(clicked(bool)), this, SLOT(onClickCustomBtn()));
 
     m_hBoxLayout->addSpacing(20);
-    m_hBoxLayout->addWidget(m_customBtnBonjour);    // ajout du btn dans le HBOX
+    m_hBoxLayout->addWidget(m_customBtnBonjour);    // adds btn in the HBox
     m_hBoxLayout->addWidget(new CustomWidget());
 
     for(int i=0; i<10; i++) {
-        CustomButton* tempButton = new CustomButton("Bonjour !", m_mainWidget);
-        m_vBoxLayout->addWidget(tempButton);      // ajout de plsr btn dans VBOX
+        int msBeforeBeingDisabled = i * 2000;
+        CustomButton* tempButton = new CustomButton(msBeforeBeingDisabled, "Bonjour !", m_mainWidget);
+        m_vBoxLayout->addWidget(tempButton);      // adds multiples btn in the VBOX
 
         connect(tempButton, SIGNAL(clicked(bool)), tempButton, SLOT(btnAction()));
     }
 
-    setCentralWidget(m_mainWidget);     // spécifie le widget principal
+    setCentralWidget(m_mainWidget);     // specified the main widget
 }
 
 MainWindow::~MainWindow()

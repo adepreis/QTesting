@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "custombutton.h"   //added
-#include <QHBoxLayout>      //added
-#include <QVBoxLayout>      //added
+#include "custombutton.h"
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include "customwidget.h"
 
@@ -21,12 +21,13 @@ private slots:
     void onClickCustomBtn();
 
 private:
-    QPushButton* m_customBtnBonjour;   // added ("m_" for Main attr)
+    // "m_" added for "Main attribute"
+    QPushButton* m_customBtnBonjour;
 
     QWidget* m_mainWidget;
 
-    QVBoxLayout* m_vBoxLayout;   // added ("m_" for Main attr)
-    QHBoxLayout* m_hBoxLayout;   // added ("m_" for Main attr)
+    QVBoxLayout* m_vBoxLayout;
+    QHBoxLayout* m_hBoxLayout;
 };
 
 #endif // MAINWINDOW_H

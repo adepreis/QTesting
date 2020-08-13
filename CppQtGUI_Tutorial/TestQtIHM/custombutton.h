@@ -3,17 +3,22 @@
 
 #include <QObject>
 #include <QPushButton>
+#include <QTimer>
 
 class CustomButton : public QPushButton
 {
-    Q_OBJECT    // Ajouté
+    Q_OBJECT
 
 private slots :
     void btnAction();
+    void disableButton();
 
 public:
-    CustomButton(QString text, QWidget* parent = 0);  // Modifié
-    ~CustomButton();       // added
+    CustomButton(int lifetime, QString text, QWidget* parent = 0);
+    ~CustomButton();
+
+private:
+    QTimer timer;
 };
 
 #endif // CUSTOMBUTTON_H

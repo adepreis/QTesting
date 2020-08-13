@@ -1,0 +1,2 @@
+# Ignore build genereated folder from github linguist stats #
+CppQtGUI_Tutorial/build-TestQtIHM-Desktop_Qt_5_9_1_MinGW_32bit-Debug/* linguist-generated

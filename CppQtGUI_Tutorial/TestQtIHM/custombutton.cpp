@@ -2,20 +2,32 @@
 #include <QPushButton>
 #include <QMessageBox>
 
-#include <QDebug>   // added
+#include <QDebug>
 
-CustomButton::CustomButton(QString text, QWidget *parent)
-    : QPushButton(parent)       // Modifié
+CustomButton::CustomButton(int lifetime, QString text, QWidget *parent)
+    : QPushButton(parent)
 {
     setText(text);
+
+    // Connect a timer that disable the button after the lifetime specified
+    timer.setInterval(lifetime);
+    timer.start();
+    connect(&timer, SIGNAL(timeout()), this, SLOT(disableButton()));
 }
 
 void CustomButton::btnAction()
 {
-    QMessageBox::information(this, "Titre","Clic détécté !");
+    QMessageBox::information(this, "Titre", "Clic détécté !");
 }
 
-CustomButton::~CustomButton()      // added
+CustomButton::~CustomButton()
 {
     qDebug() << "Destruction !" << endl;
+}
+
+void CustomButton::disableButton()
+{
+    setText("Trop tard");
+    setEnabled(false);
+    timer.stop();
 }
