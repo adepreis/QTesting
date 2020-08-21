@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout
 
 from DashUI import InfoRect, SpeedLabel
 
@@ -18,7 +18,8 @@ class MainWindow(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('PyQt Carousel')
+        self.setWindowTitle('PyQt Dashboard')
+        self.setWindowIcon(QIcon('qdash-icon.png'))
         self.setGeometry(0, 0, 800, 480)  # adapted to Raspberry official display touchscreen size
         self.setFixedSize(800, 480)
 
@@ -62,7 +63,8 @@ class MainWindow(QWidget):
     # override release
     def mouseReleaseEvent(self, e):
         if self.isDragActive:
-            print(e.pos().x() - self.previousPos.x())
+            # Displays how far the user slides :
+            # print(e.pos().x() - self.previousPos.x())
             if (e.pos().x() - self.previousPos.x()) > 15:
                 self.slideFromLeft()
             elif (e.pos().x() - self.previousPos.x()) < -15:
@@ -86,7 +88,7 @@ class MainWindow(QWidget):
         #     print("Alt + scroll")
 
         scrollEvent.accept()
-        print("Autre scroll", scrollEvent.angleDelta().x(), " ", scrollEvent.angleDelta().y())
+        # print("Autre scroll", scrollEvent.angleDelta().x(), " ", scrollEvent.angleDelta().y())
 
         if scrollEvent.angleDelta().y() > 0:
             self.slideFromRight()	# or fire event "Qt.Key_Right" ?

@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QTimer
-from PyQt5.QtGui import QFont, QColor
-from PyQt5.QtWidgets import QFrame, QLabel
+from PyQt5.QtGui import QFont, QColor, QImage, QPixmap
+from PyQt5.QtWidgets import QFrame, QLabel, QHBoxLayout, QVBoxLayout, QPushButton, QWidget
 
 
 class InfoRect(QFrame):
@@ -14,6 +14,39 @@ class InfoRect(QFrame):
         # self.setLineWidth(3)
         # self.setMidLineWidth(3)
         self.setStyleSheet("background-color:rgba(240, 240, 240, 0.2); border-radius:2px;")  # use palette instead ?
+
+        ### ADDING WIDGETS IN QFRAME (FOR TESTING PURPOSE) ###
+        layout = QVBoxLayout()
+        layout2 = QHBoxLayout()
+
+        # widget = QWidget()
+        # image = QImage("background.png")    # QPixmap, QImage or QIcon ? (""must be a widget"")
+
+        # resize QPixmap : img = QPixmap("...") then img = img.scaled(w, h)
+
+        # image.setDevicePixelRatio(2)    # 50% scale (??)
+        # widget.render(image, widget.size())
+        # layout2.addWidget(widget)  # QPixmap, QImage or QIcon ? (must be a widget)
+
+
+        iconMusic = QLabel()    # couldnt be a QWidget() (no setPixmap method..)
+        pixmap = QPixmap("music-icon.png")
+        pixmap = pixmap.scaled(50, 50)
+        iconMusic.setPixmap(pixmap)
+        layout2.addWidget(iconMusic)
+
+
+        layout2.addWidget(QLabel("Label 1"))
+        layout2.addWidget(QPushButton("Test button 1"))
+        layout.addLayout(layout2)
+
+        layout.addWidget(QLabel("Label 2"))
+        layout.addWidget(QPushButton("Test button 2"))
+
+        self.setLayout(layout)
+        # SOLUTION ? :
+        # QApplication.focusWidget().clearFocus()
+        #######################################################
 
 
 class SpeedLabel(QLabel):
@@ -42,7 +75,7 @@ class SpeedLabel(QLabel):
 
         if currentSpeed < self.MAX_SPEED:
             self.setText(str(currentSpeed + 1))
-            self.timer.start()   # starts deceleration phenomenon
+            self.timer.start()  # starts deceleration phenomenon
 
     def slowDown(self):
         currentSpeed = self.getSpeedValue()
@@ -50,7 +83,7 @@ class SpeedLabel(QLabel):
         if currentSpeed > self.MIN_SPEED:
             self.setText(str(currentSpeed - 1))
         else:
-            self.timer.stop()   # stops deceleration phenomenon when MIN_SPEED is reached
+            self.timer.stop()  # stops deceleration phenomenon when MIN_SPEED is reached
 
     def getSpeedValue(self):
         return int(self.text())

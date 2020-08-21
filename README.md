@@ -11,7 +11,7 @@ Personal project(s) to learn/discover the Qt framework.
 
 | [QDashboard](./QDashboard) |
 | :---------------: |
-| ![Illustration : application preview](./QDashboard/capture.png) |
+| ![Illustration : application preview](./QDashboard/animation.gif) |
 | _Instrument cluster using Qt5 for Python (just started)_ |
 
 ## Built with..
@@ -19,7 +19,7 @@ Personal project(s) to learn/discover the Qt framework.
 Softwares and technologies :
 
 - [QtCreator](https://www.qt.io/product/development-tools) - IDE used for C++ dev / use Qt Designer included to conceive the .ui files
-- [PyQt](https://wiki.python.org/moin/PyQt) (version 5) - 2D and ""3D graphics/hmi/gui"" API/Framework
+- [PyQt](https://wiki.python.org/moin/PyQt) (version 5) - GUI programming framework
 - [python3](https://www.python.org/downloads/) - interpreted programming language
 - [C++]() - compiled programming language
 
