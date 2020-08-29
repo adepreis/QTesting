@@ -14,6 +14,11 @@ Personal project(s) to learn/discover the Qt framework.
 | ![Illustration : application preview](./QDashboard/animation.gif) |
 | _Instrument cluster using Qt5 for Python (just started)_ |
 
+| [SaveBack](./SaveBack) |
+| :---------------: |
+| ![Illustration : application logo](./SaveBack/save-back-icon.png) |
+| _Reminder for back posture correction (just started)_ |
+
 ## Built with..
 
 Softwares and technologies :
